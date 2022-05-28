@@ -46,4 +46,37 @@ if __name__ == '__main__':
     # y verifique si los primeros usuarios (mirando la página a ojo)
     # los datos recolectados son correctos.
 
+    response = requests.get(url)
+    data = response.json()
+    
+
+    #usuarios = [{"userId": x["userId"],"completed": x["completed"] } for x in data ]
+    usuarios = [{"userId": x["userId"] } for x in data if x["completed"] == True ]
+    print(json.dumps(usuarios, indent=4))
+    
+
+    usuarios_cantidad_titulos = {}
+    
+    for usuario in usuarios:
+        if usuario["userId"] in usuarios_cantidad_titulos.keys():
+            usuarios_cantidad_titulos[usuario["userId"]] += 1
+        else:
+            usuarios_cantidad_titulos[usuario["userId"]] = 1
+
+
+    print(json.dumps(usuarios_cantidad_titulos, indent=4))
+   
+    #Grafico
+    fig = plt.figure()
+    fig.suptitle('Usuarios y Titulos Completos', fontsize = 15)
+    ax = fig.add_subplot()
+    
+    ax.bar(usuarios_cantidad_titulos.keys(), usuarios_cantidad_titulos.values())
+    ax.grid(c = 'navy', ls = 'dotted')
+    ax.set_facecolor('aliceblue')
+    ax.set_ylabel('Titulos Completos')
+    ax.set_xlabel('Usuarios')
+
+    plt.show()
+
     print("terminamos")

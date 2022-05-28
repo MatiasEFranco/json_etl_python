@@ -54,7 +54,7 @@ def update_animation(frame):
     # Transformar la información para graficar
     x, y = transform(data)
 
-    # Graficar la anumación
+    # Graficar la animación
     return load(x, y)
 
 

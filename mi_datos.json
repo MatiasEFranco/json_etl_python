@@ -1,0 +1,21 @@
+[
+    {
+        "nombre": "Matias",
+        "apellido": "Franco",
+        "DNI": 35211531,
+        "prendas": [
+            {
+                "prenda": "zapatillas",
+                "cantidad": 6
+            },
+            {
+                "prenda": "remeras",
+                "cantidad": 10
+            },
+            {
+                "prenda": "pantalones",
+                "cantidad": 8
+            }
+        ]
+    }
+]
